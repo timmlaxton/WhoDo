@@ -1,0 +1,47 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "message": "Add css to frontend",
+      "attention": false,
+      "date": "03-02-2020",
+      "user": "Ted Danson"
+    },
+    {
+      "id": 2,
+      "message": "Update server",
+      "attention": true,
+      "date": "09-19-2020",
+      "user": "Woody Guthrie"
+    },
+    {
+      "id": 3,
+      "message": "Add redux",
+      "attention": false,
+      "date": "02-26-2020",
+      "user": "Rita Pearlman"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Ted",
+      "lastName": "Danson"
+    },
+    {
+      "id": 2,
+      "firstName": "Woody",
+      "lastName": "Guthrie"
+    },
+    {
+      "id": 3,
+      "firstName": "Rita",
+      "lastName": "Pearlman"
+    },
+    {
+      "firstName": "Henry",
+      "lastName": "Winkler",
+      "id": 3
+    }
+  ]
+}
