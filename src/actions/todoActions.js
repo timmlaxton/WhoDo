@@ -1,4 +1,4 @@
-import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO, DELETE_TODO} from './types'
+import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO, DELETE_TODO, SET_CURRENT, CLEAR_CURRENT, UPDATE_TODO} from './types'
 
 // export const getTodos = () => {
 //   return async ( dispatch) => {
@@ -84,7 +84,69 @@ export const deleteTodo = (id) => async dispatch => {
   }
 };
 
+// update todo on server
 
+export const updateTodo = (todo) => async dispatch => {
+  try {
+    setLoading();
+
+    const res = await fetch(`/todos/${todo.id}`, {
+      method: 'PUT', 
+      body: JSON.stringify(todo),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    });
+    
+    const data = await res.json()
+
+    dispatch({
+      type: UPDATE_TODO,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: TODOS_ERROR,
+      payload: err.response.data
+    });
+  }
+};
+
+// Search Todos
+export const getTodos = () => async dispatch => {
+  try {
+    setLoading();
+
+    const res = await fetch('/todos');
+    const data = await res.json();
+
+    dispatch({
+      type: GET_TODOS,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: TODOS_ERROR,
+      payload: err/Response.data
+    });
+  }
+};
+
+// Set current todo
+
+export const setCurrent = todo => {
+  return {
+    type: SET_CURRENT,
+    payload: todo
+  }
+}
+// clear current todo
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT
+    
+  }
+}
 
 // set loading to true
 export const setLoading = () => {

@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { Profiler } from 'react'
 import Moment from 'react-moment'
 import { connect} from 'react-redux';
-import { deleteTodo } from '../../actions/todoActions';
+import { deleteTodo, setCurrent  } from '../../actions/todoActions';
 import PropTypes from 'prop-types'
 
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 
-const TodoItem = ({todo, deleteTodo}) => {
+const TodoItem = ({todo, deleteTodo, setCurrent}) => {
   const onDelete = () => {
     deleteTodo(todo.id);
     M.toast({ html: 'Todo Has Been Deleted'});
@@ -19,6 +19,7 @@ const TodoItem = ({todo, deleteTodo}) => {
     <div>
       <a href="#edit-todo-modal" className={`modal-trigger ${todo.attention ? 'red-text' : 'blue-text'
     }`}
+    onClick={() => setCurrent(todo)}
     >
       {todo.message}
       </a>
@@ -38,7 +39,8 @@ const TodoItem = ({todo, deleteTodo}) => {
 
 TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
-  deleteTodo: PropTypes.func.isRequired
+  deleteTodo: PropTypes.func.isRequired,
+  setCurrent: PropTypes.func.isRequired,
 }
 
-export default connect(null, {deleteTodo})(TodoItem);
+export default connect(null, {deleteTodo, setCurrent})(TodoItem);

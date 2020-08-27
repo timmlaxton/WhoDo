@@ -1,5 +1,13 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "id": 1,
+      "message": "Monkey network card on server",
+      "attention": true,
+      "user": "Ted Danson",
+      "date": "2020-08-27T15:42:28.653Z"
+    }
+  ],
   "users": [
     {
       "id": 1,

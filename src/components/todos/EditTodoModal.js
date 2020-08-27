@@ -1,18 +1,40 @@
-import React, {useState} from 'react';
-import M from 'materialize-css/dist/js/materialize.min.js'
+import React, {useState, useEffect} from 'react';
+import { connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import M from 'materialize-css/dist/js/materialize.min.js';
+import { updateTodo} from '../../actions/todoActions';
 
 
-export const EditTodoModal = () => {
+export const EditTodoModal = ({updateTodo, current}) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false)
   const [user, setUser] = useState('');
+
+  useEffect(() => {
+    if(current) {
+      setMessage(current.message)
+      setAttention(current.attention)
+      setUser(current.user)
+    }
+  }, [current])
 
   const onSubmit = () => {
     if (message === '' || user === '') {
       M.toast({html: 'Please enter a todo and user' });
     } else {
-      console.log(message, user, attention);
-        // Clear Fields //
+      const updTodo = {
+        id: current.id,
+        message,
+        attention,
+        user,
+        date: new Date()
+      };
+
+      updateTodo(updTodo);
+      M.toast({html: `Todo updated by ${user}` })
+      
+      
+      // Clear Fields //
     setMessage('');
     setUser('');
     setAttention(false);
@@ -22,7 +44,7 @@ export const EditTodoModal = () => {
   return (
     <div id='edit-todo-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>
-        <h4>Add todo</h4>
+        <h4>Add Todo</h4>
         <div className='row'>
           <div className='input-field'>
             <input 
@@ -31,9 +53,7 @@ export const EditTodoModal = () => {
             value={message} 
             onChange={e => setMessage(e.target.value)}
             />
-            <label htmlFor='message' className='active'>
-            What needs done?
-            </label>
+            
           </div>
         </div>
 
@@ -90,4 +110,13 @@ const modalStyle = {
   height: '75%'
 };
 
-export default EditTodoModal;
+EditTodoModal.propTypes = {
+  current: PropTypes.object,
+  updateTodo: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+  current: state.todo.current
+})
+
+export default connect(mapStateToProps, {updateTodo})(EditTodoModal);
