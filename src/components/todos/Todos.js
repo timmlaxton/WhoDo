@@ -1,26 +1,20 @@
-import React, { useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
+import {connect} from 'react-redux'
 import TodoItem from './TodoItem';
 import PreLoader from '../layout/Preloader'
+import PropTypes from 'prop-types';
+import {getTodos} from '../../actions/todoActions'
 
-const Todos = () => {
-const [todos, setTodos] = useState([]);
-const [loading, setLoading] = useState(false);
+const Todos = ({ todo: {todos, loading }, getTodos}) => {
+
 
 useEffect(() => {
   getTodos();
   //eslint-diasble-next-line //
 }, []);
 
-const getTodos = async () => {
-  setLoading(true);
-  const res = await fetch('/todos');
-  const data = await res.json();
 
-  setTodos(data);
-  setLoading(false);
-}
-
-if(loading){
+if(loading || todos === null){
   return <PreLoader/>
 } 
 
@@ -38,4 +32,13 @@ if(loading){
   );
 };
 
-export default Todos;
+Todos.propTypes = {
+  todo: PropTypes.object.isRequired,
+  getTodos: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+  todo: state.todo
+});
+
+export default connect(mapStateToProps,  {getTodos})(Todos);
