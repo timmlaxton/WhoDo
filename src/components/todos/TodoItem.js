@@ -7,7 +7,7 @@ const TodoItem = ({todo}) => {
   return (
     <li className="collection-item">
     <div>
-      <a href="#edit-todo-model" className={`modal-trigger ${todo.attention ? 'red-text' : 'blue-text'
+      <a href="#edit-todo-modal" className={`modal-trigger ${todo.attention ? 'red-text' : 'blue-text'
     }`}
     >
       {todo.message}

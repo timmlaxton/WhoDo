@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import M from 'materialize-css/dist/js/materialize.min.js';
+import M from 'materialize-css/dist/js/materialize.min.js'
+
 
 export const EditTodoModal = () => {
   const [message, setMessage] = useState('');
@@ -7,8 +8,8 @@ export const EditTodoModal = () => {
   const [user, setUser] = useState('');
 
   const onSubmit = () => {
-    if(message === '' || user === '') {
-      M.toast({html: 'Please enter a todo and user'});
+    if (message === '' || user === '') {
+      M.toast({html: 'Please enter a todo and user' });
     } else {
       console.log(message, user, attention);
         // Clear Fields //

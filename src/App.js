@@ -4,6 +4,8 @@ import Todos from './components/todos/Todos';
 import AddBtn from './components/layout/AddBtn'
 import AddTodoModal from './components/todos/AddTodoModal'
 import EditTodoModal from './components/todos/EditTodoModal'
+import AddUserModal from './components/users/AddUserModal'
+import UserListModal from './components/users/UserListModal'
 
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -22,6 +24,8 @@ const App = () => {
       <AddBtn/>
       <AddTodoModal/>
       <EditTodoModal/>
+      <AddUserModal/>
+      <UserListModal/>
       <Todos/>
     </div>
   </Fragment>
