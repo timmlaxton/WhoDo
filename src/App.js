@@ -5,7 +5,9 @@ import AddBtn from './components/layout/AddBtn'
 import AddTodoModal from './components/todos/AddTodoModal'
 import EditTodoModal from './components/todos/EditTodoModal'
 import AddUserModal from './components/users/AddUserModal'
-import UserListModal from './components/users/UserListModal'
+import UserListModal from './components/users/UserListModal';
+import { Provider} from 'react-redux';
+import store from './store';
 
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -18,6 +20,7 @@ const App = () => {
     M.AutoInit();
   });
   return (
+    <Provider store={store}> 
     <Fragment>
     <SearchBar/>
     <div className="container">
@@ -29,6 +32,7 @@ const App = () => {
       <Todos/>
     </div>
   </Fragment>
+  </Provider>
   );
 };
 
