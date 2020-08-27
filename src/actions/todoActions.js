@@ -1,4 +1,4 @@
-import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO} from './types'
+import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO, DELETE_TODO} from './types'
 
 // export const getTodos = () => {
 //   return async ( dispatch) => {
@@ -34,7 +34,7 @@ export const getTodos = () => async dispatch => {
 };
 
 
-//aDD NEW tODO
+//Add New Todo
 
 export const addTodo = (todo) => async dispatch => {
   try {
@@ -56,10 +56,36 @@ export const addTodo = (todo) => async dispatch => {
   } catch (err) {
     dispatch({
       type: TODOS_ERROR,
-      payload: err/Response.data
+      payload: err.response.data
     });
   }
 };
+
+// Delete Todos
+
+export const deleteTodo = (id) => async dispatch => {
+  try {
+    setLoading();
+
+    await fetch(`/todos/${id}`, {
+      method: 'DELETE'
+    });
+    
+
+    dispatch({
+      type: DELETE_TODO,
+      payload: id
+    });
+  } catch (err) {
+    dispatch({
+      type: TODOS_ERROR,
+      payload: err.response.data
+    });
+  }
+};
+
+
+
 // set loading to true
 export const setLoading = () => {
   return {

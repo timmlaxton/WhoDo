@@ -1,9 +1,19 @@
 import React from 'react'
 import Moment from 'react-moment'
+import { connect} from 'react-redux';
+import { deleteTodo } from '../../actions/todoActions';
 import PropTypes from 'prop-types'
 
+import M from 'materialize-css/dist/js/materialize.min.js'
 
-const TodoItem = ({todo}) => {
+
+const TodoItem = ({todo, deleteTodo}) => {
+  const onDelete = () => {
+    deleteTodo(todo.id);
+    M.toast({ html: 'Todo Has Been Deleted'});
+  }
+
+
   return (
     <li className="collection-item">
     <div>
@@ -17,7 +27,7 @@ const TodoItem = ({todo}) => {
         <span className='black-tect'>ID #{todo.id}</span> last updated by{' '}
         <span className='black-text'>{todo.user}</span> on <Moment format="MMMM Do YYYY, h:mm:ss a">{todo.date}</Moment>
       </span>
-      <a href="#" className="secondary-content">
+      <a href="#!" onClick={onDelete} className="secondary-content">
         <i className="material-icons grey-text">delete</i>
       </a>
     </div>
@@ -27,7 +37,8 @@ const TodoItem = ({todo}) => {
 }
 
 TodoItem.propTypes = {
-  todo: PropTypes.object.isRequired
+  todo: PropTypes.object.isRequired,
+  deleteTodo: PropTypes.func.isRequired
 }
 
-export default TodoItem
+export default connect(null, {deleteTodo})(TodoItem);

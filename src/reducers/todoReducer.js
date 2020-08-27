@@ -1,4 +1,4 @@
-import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO} from '../actions/types'
+import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO, DELETE_TODO} from '../actions/types'
 
 const initialState = {
   todos: null,
@@ -20,7 +20,13 @@ export default (state = initialState, action) => {
         ...state,
         todos: [...state.todos, action.payload],
         loading: false
-      }
+      };
+      case DELETE_TODO:
+        return {
+          ...state,
+          todos: state.todos.filter(todo => todo.id !== action.payload),
+          loading: false 
+        };
     case SET_LOADING:
       return {
         ...state,

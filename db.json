@@ -1,13 +1,5 @@
 {
-  "todos": [
-    {
-      "message": "Buy Zach a hat",
-      "attention": true,
-      "user": "Ted Danson",
-      "date": "2020-08-27T14:03:08.415Z",
-      "id": 1
-    }
-  ],
+  "todos": [],
   "users": [
     {
       "id": 1,
