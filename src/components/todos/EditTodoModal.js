@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import UserSelectOptions from '../users/UserSelectOptions'
 import { connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
@@ -68,9 +69,7 @@ export const EditTodoModal = ({updateTodo, current}) => {
              <option value='' disabled>
                Select user
              </option>
-             <option value="Ted Danson">Ted Danson</option>
-             <option value="Woody Guthrie">Woody Guthrie</option>
-             <option value="Rita Pearlman">Rita Pearlman</option>
+             <UserSelectOptions/>
            </select>
           </div>
         </div>

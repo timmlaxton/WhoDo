@@ -1,4 +1,4 @@
-import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO, DELETE_TODO, SET_CURRENT, CLEAR_CURRENT, UPDATE_TODO} from './types'
+import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO, DELETE_TODO, SET_CURRENT, CLEAR_CURRENT, UPDATE_TODO, SEARCH_TODOS} from './types'
 
 // export const getTodos = () => {
 //   return async ( dispatch) => {
@@ -28,7 +28,7 @@ export const getTodos = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: TODOS_ERROR,
-      payload: err/Response.data
+      payload: err/Response.statusText
     });
   }
 };
@@ -56,7 +56,7 @@ export const addTodo = (todo) => async dispatch => {
   } catch (err) {
     dispatch({
       type: TODOS_ERROR,
-      payload: err.response.data
+      payload: err.response.statusText
     });
   }
 };
@@ -79,7 +79,7 @@ export const deleteTodo = (id) => async dispatch => {
   } catch (err) {
     dispatch({
       type: TODOS_ERROR,
-      payload: err.response.data
+      payload: err.response.statusText
     });
   }
 };
@@ -107,27 +107,27 @@ export const updateTodo = (todo) => async dispatch => {
   } catch (err) {
     dispatch({
       type: TODOS_ERROR,
-      payload: err.response.data
+      payload: err.response.statusText
     });
   }
 };
 
 // Search Todos
-export const getTodos = () => async dispatch => {
+export const searchTodos = (text) => async dispatch => {
   try {
     setLoading();
 
-    const res = await fetch('/todos');
+    const res = await fetch(`/todos?q=${text}`);
     const data = await res.json();
 
     dispatch({
-      type: GET_TODOS,
+      type: SEARCH_TODOS,
       payload: data
     });
   } catch (err) {
     dispatch({
       type: TODOS_ERROR,
-      payload: err/Response.data
+      payload: err/Response.statusText
     });
   }
 };

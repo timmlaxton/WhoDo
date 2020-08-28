@@ -9,6 +9,6 @@ export const SET_LOADING = 'SET_LOADING';
 export const TODOS_ERROR = 'TODOS_ERROR';
 export const SEARCH_TODOS = 'SEARCH_TODOS';
 export const GET_USERS = 'GET_USERS';
-export const ADD_USERS = 'ADD_USERS';
+export const ADD_USER = 'ADD_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const USERS_ERROR = 'USERS_ERROR';

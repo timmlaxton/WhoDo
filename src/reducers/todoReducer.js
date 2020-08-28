@@ -1,4 +1,4 @@
-import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO, DELETE_TODO, SET_CURRENT, CLEAR_CURRENT, UPDATE_TODO} from '../actions/types'
+import {GET_TODOS, SET_LOADING, TODOS_ERROR, ADD_TODO, DELETE_TODO, SET_CURRENT, CLEAR_CURRENT, UPDATE_TODO, SEARCH_TODOS} from '../actions/types'
 
 const initialState = {
   todos: null,
@@ -31,6 +31,11 @@ export default (state = initialState, action) => {
           return {
             ...state,
             todos: state.todos.map(todo => todo.id === action.payload.id ? action.payload : todo)
+          }
+          case SEARCH_TODOS:
+          return {
+            ...state,
+            todos: action.payload
           }
         case SET_CURRENT:
           return {
