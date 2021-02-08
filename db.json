@@ -1,25 +1,18 @@
 {
   "todos": [
     {
-      "id": 1,
-      "message": "Monkey network card on server",
-      "attention": true,
-      "user": "Ted Danson",
-      "date": "2020-08-27T15:42:28.653Z"
-    },
-    {
-      "message": "Avocado eats fish",
+      "message": "Feed Dog",
       "attention": false,
-      "user": "Woody Guthrie",
-      "date": "2020-08-27T15:59:57.405Z",
-      "id": 2
+      "user": "Ted Danson",
+      "date": "2021-02-08T15:11:15.176Z",
+      "id": 1
     },
     {
-      "message": "Zebra jumps woop",
+      "message": "Milk the cat",
       "attention": false,
       "user": "Rita Pearlman",
-      "date": "2020-08-27T16:00:13.260Z",
-      "id": 3
+      "date": "2021-02-08T15:12:41.123Z",
+      "id": 2
     }
   ],
   "users": [
@@ -39,9 +32,9 @@
       "lastName": "Pearlman"
     },
     {
-      "firstName": "Henry",
-      "lastName": "Winkler",
-      "id": 3
+      "firstName": "Helen",
+      "lastName": "Laxton",
+      "id": 4
     }
   ]
 }
